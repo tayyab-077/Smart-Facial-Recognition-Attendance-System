@@ -1,0 +1,16 @@
+body{font-family:Inter,Arial,Helvetica;background:#f4f7fb;margin:0}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#0f1724;color:#fff}
+.nav .brand{font-weight:700}
+.nav nav a{color:#cbd5e1;margin-left:14px;text-decoration:none}
+.container{padding:24px}
+h1,h2{color:#0b1220}
+button{background:#0b74ff;color:#fff;border:none;padding:10px 14px;border-radius:6px;cursor:pointer}
+input{padding:8px;border-radius:6px;border:1px solid #dbe6f2}
+video{border-radius:6px;border:1px solid #ccddee}
+pre{background:#eef5ff;padding:12px;border-radius:6px}
+
+#result {
+    margin-top: 15px;
+    font-size: 16px;
+    max-width: 480px;
+}

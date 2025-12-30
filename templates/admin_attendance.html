@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Admin — Attendance</h2>
+
+<div style="display:flex; gap:8px; align-items:center; margin-bottom:12px;">
+    <input id="filterDate" placeholder="YYYY-MM-DD (optional)">
+    <input id="filterUser" placeholder="User ID (optional)">
+    <select id="filterDevice">
+        <option value="">All devices</option>
+        <option value="mobile">Mobile</option>
+        <option value="pc">PC</option>
+    </select>
+    <button onclick="loadAttendance()">Apply</button>
+    <button onclick="exportCSV()">Export CSV</button>
+</div>
+
+<table id="attTable" border="1" cellpadding="6" style="width:100%; border-collapse:collapse;">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Timestamp</th>
+            <th>Device</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- populated by admin.js -->
+    </tbody>
+</table>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+
+{% endblock %}

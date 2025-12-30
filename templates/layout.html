@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>VisionAttendance</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">VisionAttendance</div>
+    <nav>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('enroll_page') }}">Enroll</a>
+      <a href="{{ url_for('attendance_page') }}">Attendance</a>
+      <a href="{{ url_for('users_page') }}">Users</a>
+      {% if session.get('is_admin') %}
+        <a href="{{ url_for('admin_logout') }}">Logout</a>
+        <a href="{{ url_for('admin_dashboard') }}">Admin</a>
+      {% else %}
+        <a href="{{ url_for('admin_login') }}">Admin</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Attendance modal for admin -->
+  <div id="attendanceModal" class="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:999;">
+      <div class="modal-content" style="background:#fff;padding:20px;margin:50px auto;border-radius:8px;width:90%;max-width:500px;position:relative;">
+          <span onclick="hideModal()" style="position:absolute;top:10px;right:15px;font-size:20px;cursor:pointer;">&times;</span>
+          <h3 id="modalTitle">Attendance</h3>
+          <ul id="modalList" style="list-style:none;padding-left:0;max-height:400px;overflow-y:auto;"></ul>
+          <button onclick="hideModal()" style="margin-top:12px;">Close</button>
+      </div>
+  </div>
+</body>
+</html>

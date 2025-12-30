@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<!-- ----------------------------
+     Pending Enrollments
+----------------------------- -->
+<div class="pending-section">
+    <h3>Pending Enrollments</h3>
+    <ul id="pendingList">
+        <!-- JS will populate pending users here -->
+    </ul>
+</div>
+
+<!-- ----------------------------
+     Users Table
+----------------------------- -->
+<div class="users-header">
+    <h3>Registered Users</h3>
+    <div class="right-controls">
+        <button id="toggleDarkMode" class="darkmode-btn">🌙 Dark Mode</button>
+    </div>
+</div>
+
+<div class="users-container">
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Attendance Count</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- JS will populate users -->
+        </tbody>
+    </table>
+</div>
+
+
+<!-- ----------------------------
+     Include CSS & JS
+----------------------------- -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+
+{% endblock %}

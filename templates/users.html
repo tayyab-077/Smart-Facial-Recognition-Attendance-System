@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/users.css') }}">
+
+<div class="users-header">
+    <h2 class="page-title">Registered Users</h2>
+
+    <div class="right-controls">
+        <span class="user-count-badge">Total Users: {{ users|length }}</span>
+        <button class="export-btn" onclick="exportUsersToExcel()">⬇ Export</button>
+        <button id="toggleDarkMode" class="darkmode-btn">🌙</button>
+    </div>
+</div>
+
+<div class="users-container">
+    {% if users %}
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search user..." onkeyup="filterUsers()">
+    </div>
+
+    <table class="users-table" id="usersTable">
+        <thead>
+            <tr>
+                <th data-sort="id">ID</th>
+                <th data-sort="name">Name</th>
+                <th data-sort="datetime">Enrollment Date & Time</th>
+                <th>Admin Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.name }}</td>
+                <td class="created-at">{{ u.created_at }}</td>
+                <td>
+                    <textarea class="note-box" data-user="{{ u.id }}" onblur="saveAdminNote(this)">{{ u.admin_note }}</textarea>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="empty-msg">No users found.</p>
+    {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='js/users.js') }}"></script>
+{% endblock %}

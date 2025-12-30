@@ -1,0 +1,181 @@
+/* admin.css — shared styles for admin pages */
+
+/* ----------------------
+   Global admin styles
+----------------------- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    margin: 16px 0;
+    font-size: 1.8rem;
+    color: #222;
+}
+
+/* ----------------------
+   Controls & Filters
+----------------------- */
+.right-controls,
+input,
+select,
+button {
+    font-size: 0.9rem;
+}
+
+.right-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+input, select {
+    padding: 6px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: #1976d2;
+    color: #fff;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #0d47a1;
+}
+
+button.delete-btn {
+    background-color: #c62828;
+}
+
+/* ----------------------
+   Tables
+----------------------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    background: #fff;
+    box-shadow: 0 0 4px rgba(0,0,0,0.05);
+}
+
+table th, table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+table th {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+table tr:hover {
+    background-color: #f9f9f9;
+}
+
+input[type="text"] {
+    width: 200px;
+}
+
+/* ----------------------
+   Pending list
+----------------------- */
+#pendingList {
+    list-style: none;
+    padding-left: 0;
+    margin: 8px 0;
+}
+
+#pendingList li {
+    padding: 6px 8px;
+    background: #fff;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 2px rgba(0,0,0,0.05);
+}
+
+#pendingList button {
+    margin-left: 6px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+}
+
+/* ----------------------
+   Attendance Modal
+----------------------- */
+#attendanceModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+#attendanceModal .modal-content {
+    background: #fff;
+    padding: 16px;
+    border-radius: 6px;
+    max-width: 500px;
+    width: 90%;
+}
+
+#attendanceModal ul {
+    list-style: none;
+    padding-left: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#attendanceModal li {
+    padding: 4px 0;
+}
+
+/* ----------------------
+   Dark mode toggle
+----------------------- */
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode table {
+    background: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode table th {
+    background: #2c2c2c;
+}
+
+body.dark-mode #pendingList li {
+    background: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode button {
+    background-color: #1565c0;
+}
+
+body.dark-mode button.delete-btn {
+    background-color: #b71c1c;
+}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="enroll-container">
+    <h2>Enroll New User</h2>
+
+    <div class="input-group">
+        <label for="name">Full Name</label>
+        <input id="name" placeholder="Enter full name..." />
+    </div>
+
+    <video id="video" autoplay playsinline></video>
+
+    <button id="start">Start Capture</button>
+    <p id="status"></p>
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/enroll.css') }}">
+<script src="{{ url_for('static', filename='js/enroll.js') }}"></script>
+{% endblock %}

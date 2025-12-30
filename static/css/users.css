@@ -1,0 +1,149 @@
+/* Page Title and Header */
+.users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Users Count Badge */
+.user-count-badge {
+    background: #007bff;
+    padding: 8px 12px;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+/* Top Right Buttons */
+.right-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.export-btn,
+.darkmode-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.export-btn {
+    background: #28a745;
+    color: white;
+}
+
+.darkmode-btn {
+    background: #333;
+    color: white;
+}
+
+/* Container */
+.users-container {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    margin-top: 15px;
+}
+
+/* Search Input */
+.search-box {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.search-box input {
+    padding: 10px 14px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* Table */
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th {
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.users-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+/* Note textarea */
+.note-box {
+    width: 100%;
+    height: 60px;
+    resize: vertical;
+    border-radius: 6px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Empty message */
+.empty-msg {
+    padding: 15px;
+    background: #fff4e6;
+    border-left: 4px solid #ff9800;
+    border-radius: 5px;
+    color: #8a6d3b;
+}
+
+/* ===================== */
+/*        DARK MODE       */
+/* ===================== */
+
+body.dark-mode {
+    background: #1e1e1e;
+    color: #eee;
+}
+
+body.dark-mode .users-container {
+    background: #2a2a2a;
+    box-shadow: none;
+}
+
+body.dark-mode .users-table th {
+    background: #444;
+}
+
+body.dark-mode .users-table td {
+    border-color: #555;
+}
+
+body.dark-mode .note-box {
+    background: #333;
+    color: #fff;
+}
+
+body.dark-mode .search-box input {
+    background: #333;
+    color: #fff;
+}
+
+body.dark-mode .export-btn {
+    background: #1b8c3d;
+}
+
+body.dark-mode .darkmode-btn {
+    background: #888;
+}
