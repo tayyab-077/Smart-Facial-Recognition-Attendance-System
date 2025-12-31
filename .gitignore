@@ -10,3 +10,6 @@ __pycache__/
 
 # System files
 .DS_Store
+
+# ONNX models (downloaded at runtime)
+ml/models/*.onnx
