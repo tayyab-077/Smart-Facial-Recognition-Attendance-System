@@ -4,9 +4,15 @@ import json
 import base64
 from pathlib import Path
 from datetime import datetime
-from functools import wraps
+from functools import wraps 
 import uuid
 import sqlite3
+
+from ml.download_models import download_if_missing
+
+print("🚀 Starting app, ensuring models exist...")
+download_if_missing()
+print("✅ Models ready")
 
 from flask import (
     Flask, render_template, request, jsonify, session,
@@ -16,7 +22,7 @@ from flask import (
 # --- Blueprint Import (admin routes)
 from api.admin_api import admin_bp
 
-# ----- Import the user_api blueprint 
+# ----- Import the user_api blueprint  
 from api.user_api import user_bp
 
 # ----- Import the enroll_api blueprint 
