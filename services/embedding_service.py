@@ -6,15 +6,17 @@
 import numpy as np
 from database.db import db_conn
 
-
-def find_best_user(embedding, threshold=0.70, debug=False):
+def find_top_k_users(embedding, k=2):
     """
-    embedding : np.ndarray (512,) or (1,512)
-    threshold : cosine similarity threshold
-    debug     : print similarity scores
+    Returns top-k matching users sorted by similarity (desc)
+
+    Output:
+    [
+      {"user_id": 1, "name": "A", "score": 0.93},
+      {"user_id": 2, "name": "B", "score": 0.82}
+    ]
     """
 
-    # Normalize input embedding
     embedding = embedding.reshape(-1).astype(np.float32)
     embedding /= (np.linalg.norm(embedding) + 1e-6)
 
@@ -30,38 +32,22 @@ def find_best_user(embedding, threshold=0.70, debug=False):
     rows = cur.fetchall()
     db.close()
 
-    if not rows:
-        return None, 0.0
-
-    best_user = None
-    best_score = -1.0
+    results = []
 
     for user_id, name, emb_blob in rows:
         if emb_blob is None:
             continue
 
-        # Convert DB BLOB → numpy
         db_emb = np.frombuffer(emb_blob, dtype=np.float32).copy()
         db_emb /= (np.linalg.norm(db_emb) + 1e-6)
 
-        # Cosine similarity
         score = float(np.dot(embedding, db_emb))
 
-        if debug:
-            print(f"[MATCH] {name} (id={user_id}) → score={score:.4f}")
+        results.append({
+            "user_id": user_id,
+            "name": name,
+            "score": score
+        })
 
-        if score > best_score:
-            best_score = score
-            best_user = {
-                "user_id": user_id,
-                "name": name
-            }
-
-    if debug:
-        print(f"[BEST] score={best_score:.4f}, threshold={threshold}")
-
-    # ✅ Threshold check ONLY ONCE
-    if best_score < threshold:
-        return None, best_score
-
-    return best_user, best_score
+    results.sort(key=lambda x: x["score"], reverse=True)
+    return results[:k]

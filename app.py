@@ -8,6 +8,7 @@ from functools import wraps
 import uuid
 import sqlite3
 
+
 from ml.download_models import download_if_missing
 
 print("🚀 Starting app, ensuring models exist...")
@@ -291,5 +292,5 @@ def static_files(filename):
 # Run App
 # ------------------------------------------------------
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=True)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
